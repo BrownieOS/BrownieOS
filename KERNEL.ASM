@@ -14,7 +14,15 @@
 	;=======================================================================================================;
 	;	Kernel Includes																						;
 	;=======================================================================================================;
-	; None For Now! :)																						;
+	include "KERNEL16.INC"
+																											;
+	;=======================================================================================================;
+	;	Kernel Defintions																					;
+	;=======================================================================================================;
+	VersionDEF				equ	"v0.01"																		; Version
+	Version					db	VersionDEF, 0																; Version string for applications
+	EntryMSG				db	"BrownieOS ", VersionDEF, 13, 10, 0											; Entry message
+	CopyrightMSG			db	"(C) Copyright All BrownieOS Contributors", 13, 10, 0						;
 																											;
 	Brownie16:																								;
 		xor ax, ax																							; Set the segment to 0
