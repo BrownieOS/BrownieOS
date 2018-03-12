@@ -2,7 +2,7 @@
 ;		BrownieOS																							;
 ;			(C) Copyright All BrownieOS Contributors														;
 ;			Licensed under the GPLv3 license - Read GPLv3.txt												;
-;		boot_floppy.asm - The FAT12 floppy disk boot sector													;
+;		FAT12_BOOT.ASM - The FAT12 floppy disk boot sector													;
 ;===========================================================================================================;
 																											;
 	use16																									; We are loaded in 16-bit real mode
