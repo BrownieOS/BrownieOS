@@ -7,7 +7,7 @@
 																											;
 	use16																									; We are loaded in 16-bit real mode
 	org 0																									; We will set the segments later
-	format binary as 'bwn'																					; Output a Brownie core file
+	format binary as 'BWN'																					; Output a Brownie core file
 																											;
 	jmp LoadBrownieKernel																					; Jump to the main kernel loading routines
 																											;
