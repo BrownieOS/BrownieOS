@@ -2,7 +2,7 @@
 ;		BrownieOS																							;
 ;			(C) Copyright All BrownieOS Contributors														;
 ;			Licensed under the GPLv3 license - Read GPLv3.txt												;
-;		kernel.asm - The BrownieOS core																		;
+;		KERNEL.ASM - The BrownieOS core																		;
 ;===========================================================================================================;
 																											;
 	use16																									; We are loaded in 16-bit real mode, and we will set the gdt and protected mode later
@@ -12,17 +12,11 @@
 	jmp Brownie16																							; Jump to the 16-bit entry point
 																											;
 	;=======================================================================================================;
-	;	Kernel Includes																						;
+	;	Kernel 16-bit Includes																				;
 	;=======================================================================================================;
-	include "KERNEL16.INC"
-																											;
-	;=======================================================================================================;
-	;	Kernel Defintions																					;
-	;=======================================================================================================;
-	VersionDEF				equ	"v0.01"																		; Version
-	Version					db	VersionDEF, 0																; Version string for applications
-	EntryMSG				db	"BrownieOS ", VersionDEF, 13, 10, 0											; Entry message
-	CopyrightMSG			db	"(C) Copyright All BrownieOS Contributors", 13, 10, 0						;
+	include "KERNEL16.INC"																					; Kernel main 16-bit functions
+	include "CONFIG.INC"																					; Configuration screen
+	include "VBE16.INC"																						; HD/VBE/VESA functions
 																											;
 	Brownie16:																								;
 		xor ax, ax																							; Set the segment to 0
@@ -30,6 +24,10 @@
 		mov es, ax																							; .
 		mov fs, ax																							; .
 		mov gs, ax																							; .
+																											;
+		call ConfigBrownie																					; Do the configuration screen
+																											;
+		call InitVBE																						; Initialize VBE
 																											;
 		cli																									; If we land here, clear the interrupts
 		hlt																									; And, halt the system, to prevent code after this from executing
